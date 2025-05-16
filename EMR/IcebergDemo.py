@@ -4,7 +4,7 @@ from pyspark.sql.types import DoubleType, FloatType, LongType, StructType, Struc
 from pyspark.sql.functions import col, lit
 # from datetime import datetime
 
-# .config("spark.sql.catalog.allaniceberg.warehouse", "s3://allan-bigdata-test/iceberg_test") \
+#    .config("spark.sql.catalog.allaniceberg.warehouse", "s3://allan-bigdata-test/iceberg_test") \
 
 spark = SparkSession \
     .builder \
@@ -32,8 +32,9 @@ spark.sql(f"""
     )
     USING iceberg
     OPTIONS ('format-version'='2')
-    LOCATION 's3://allan-bigdata-test/iceberg_test/{TABLE_NAME}'
     """)
+
+#LOCATION 's3://allan-bigdata-test/iceberg_test/{TABLE_NAME}'
 
 #Insert data into customer table
 spark.sql(f"""
