@@ -4,13 +4,14 @@ from pyspark.sql.types import DoubleType, FloatType, LongType, StructType, Struc
 from pyspark.sql.functions import col, lit
 # from datetime import datetime
 
+# .config("spark.sql.catalog.allaniceberg.warehouse", "s3://allan-bigdata-test/iceberg_test") \
+
 spark = SparkSession \
     .builder \
     .config("hive.metastore.client.factory.class",
             "com.amazonaws.glue.catalog.metastore.AWSGlueDataCatalogHiveClientFactory") \
     .config("spark.jars", "/usr/lib/spark/jars/iceberg-spark-runtime-3.5_2.12-1.4.3-amzn-0.jar") \
     .config("spark.sql.extensions", "org.apache.iceberg.spark.extensions.IcebergSparkSessionExtensions") \
-    .config("spark.sql.catalog.allaniceberg.warehouse", "s3://allan-bigdata-test/iceberg_test") \
     .config("spark.sql.catalog.allaniceberg", "org.apache.iceberg.spark.SparkCatalog") \
     .config("spark.sql.catalog.allaniceberg.catalog-impl", "org.apache.iceberg.aws.glue.GlueCatalog") \
     .config("spark.sql.catalog.glue_catalog.lock-impl", "org.apache.iceberg.aws.glue.DynamoLockManager") \
@@ -31,7 +32,7 @@ spark.sql(f"""
     )
     USING iceberg
     OPTIONS ('format-version'='2')
-    LOCATION 's3://s3://allan-bigdata-test/iceberg_test/{TABLE_NAME}'
+    LOCATION 's3://allan-bigdata-test/iceberg_test/{TABLE_NAME}'
     """)
 
 #Insert data into customer table
