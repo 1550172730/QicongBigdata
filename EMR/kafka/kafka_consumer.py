@@ -4,8 +4,8 @@ import json
 def main():
     consumer = KafkaConsumer(
         'flink-topic',
-        bootstrap_servers=['b-1.flinkcluster.1wl9zp.c3.kafka.us-east-2.amazonaws.com:9096',
-                          'b-2.flinkcluster.1wl9zp.c3.kafka.us-east-2.amazonaws.com:9096'],
+        bootstrap_servers=['b-2-public.flinkcluster.1wl9zp.c3.kafka.us-east-2.amazonaws.com:9196',
+                          'b-1-public.flinkcluster.1wl9zp.c3.kafka.us-east-2.amazonaws.com:9196'],
         group_id='python-consumer-group',
         auto_offset_reset='earliest',
         value_deserializer=lambda x: x.decode('utf-8'),
