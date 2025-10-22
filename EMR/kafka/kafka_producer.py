@@ -11,7 +11,10 @@ def main():
         sasl_plain_username='lqicongl',
         sasl_plain_password='tqw961110',
         ssl_check_hostname=True,
-        value_serializer=lambda x: json.dumps(x).encode('utf-8')
+        value_serializer=lambda x: json.dumps(x).encode('utf-8'),
+        request_timeout_ms=30000,
+        delivery_timeout_ms=120000,
+        connections_max_idle_ms=540000
     )
     
     for i in range(10):
