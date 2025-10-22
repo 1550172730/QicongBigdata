@@ -4,8 +4,8 @@ import time
 
 def main():
     producer = KafkaProducer(
-        bootstrap_servers=['b-1-public.flinkcluster.1wl9zp.c3.kafka.us-east-2.amazonaws.com:9196',
-                          'b-2-public.flinkcluster.1wl9zp.c3.kafka.us-east-2.amazonaws.com:9196'],
+        bootstrap_servers=['b-2-public.flinkcluster.1wl9zp.c3.kafka.us-east-2.amazonaws.com:9196',
+                          'b-1-public.flinkcluster.1wl9zp.c3.kafka.us-east-2.amazonaws.com:9196'],
         security_protocol='SASL_SSL',
         sasl_mechanism='SCRAM-SHA-512',
         sasl_plain_username='lqicongl',
